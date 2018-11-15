@@ -1,0 +1,105 @@
+﻿@model CAServer.Models.DistinguishedName
+
+@{
+    ViewData["Title"] = "Generate a SSL Certificate by HDU Certificate Authority";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>Here you can generate a sub certificate by HDU Certificate Authority. which using for security connections, data encipher,...</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="get_ssl_certificate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CN" class="control-label">Common Name</label>
+                <input asp-for="CN" class="form-control" />
+                <span asp-validation-for="CN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="C" class="control-label">Country</label>
+                <input asp-for="C" class="form-control" />
+                <span asp-validation-for="C" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="O" class="control-label">Organization</label>
+                <input asp-for="O" class="form-control" />
+                <span asp-validation-for="O" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OU" class="control-label">Organization Unit</label>
+                <input asp-for="OU" class="form-control" />
+                <span asp-validation-for="OU" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="E" class="control-label">Email</label>
+                <input asp-for="E" class="form-control" />
+                <span asp-validation-for="E" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="L" class="control-label">City</label>
+                <input asp-for="L" class="form-control" />
+                <span asp-validation-for="L" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DNS" class="control-label">Domain Name</label>
+                <input asp-for="DNS" class="form-control" />
+                <span asp-validation-for="L" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Generate" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8">
+        <style>
+            table {
+                border-spacing: 50px;
+            }
+            th,td{
+                padding: 8px;
+            }
+        </style>
+        <div class="row">
+            <img class="col-xs-1" src="~/images/ssl-certificate.png" />
+            <h4 class="col-xs-11" style="bottom:0">HDU Root Certificate Authority Information</h4>
+        </div>
+        <hr>
+        <table>
+            <tr>
+                <td><b>Issued:</b></td>
+                <td>@ViewBag.Issued</td>
+            </tr>
+            <tr>
+                <td><b>Serial Number:</b></td>
+                <td>@ViewBag.Serial</td>
+            </tr>
+            <tr>
+                <td><b>Thumbprint:</b></td>
+                <td>@ViewBag.Thumbprint</td>
+            </tr>
+            <tr>
+                <td><b>Valid Date:</b></td>
+                <td>@ViewBag.NotBefore</td>
+            </tr>
+            <tr>
+                <td><b>Invalid Date:</b></td>
+                <td>@ViewBag.NotAfter</td>
+            </tr>
+            <tr>
+                <td><b>Public Key:</b></td>
+                <td  style="word-break: break-all">@ViewBag.PublicKey</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Home/Index">Back to Home</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
