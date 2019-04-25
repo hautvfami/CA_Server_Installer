@@ -11,6 +11,10 @@ Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Server", "Server\Server.njs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAServer", "CAServer\CAServer.csproj", "{5BDED0B4-5A6C-4402-B04F-6E2B901D5CCA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForExam", "ForExam\ForExam.csproj", "{CBC517D8-D86E-4829-A839-8D1623BA0D81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Signer", "Signer\Signer.csproj", "{CDD14E50-58D3-4C28-9A40-A2CCC481E49F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{5BDED0B4-5A6C-4402-B04F-6E2B901D5CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BDED0B4-5A6C-4402-B04F-6E2B901D5CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BDED0B4-5A6C-4402-B04F-6E2B901D5CCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBC517D8-D86E-4829-A839-8D1623BA0D81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBC517D8-D86E-4829-A839-8D1623BA0D81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBC517D8-D86E-4829-A839-8D1623BA0D81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBC517D8-D86E-4829-A839-8D1623BA0D81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDD14E50-58D3-4C28-9A40-A2CCC481E49F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDD14E50-58D3-4C28-9A40-A2CCC481E49F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDD14E50-58D3-4C28-9A40-A2CCC481E49F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDD14E50-58D3-4C28-9A40-A2CCC481E49F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

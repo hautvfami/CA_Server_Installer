@@ -181,16 +181,34 @@ namespace CAServer.Controllers
             string cerCert = "-----BEGIN CERTIFICATE-----\r\n" + Convert.ToBase64String(sslCert.Export(X509ContentType.Cert), Base64FormattingOptions.InsertLineBreaks) + "\r\n-----END CERTIFICATE-----";
             byte[] pfxCert = sslCert.Export(X509ContentType.Pfx, "password");
 
+            String CertID = DateTimeOffset.Now.Ticks.ToString();
             // Write to disk
-            System.IO.File.WriteAllBytes(AppContext.BaseDirectory + "/sslCertHDU.p12", p12Cert);
-            System.IO.File.WriteAllText(AppContext.BaseDirectory + "/sslCertHDU.cer", cerCert);
-            System.IO.File.WriteAllBytes(AppContext.BaseDirectory + "/sslCertHDU.pfx", pfxCert);
+            System.IO.File.WriteAllBytes(AppContext.BaseDirectory + "/" + CertID + ".p12", p12Cert);
+            System.IO.File.WriteAllText(AppContext.BaseDirectory + "/" + CertID + ".cer", cerCert);
+            System.IO.File.WriteAllBytes(AppContext.BaseDirectory + "/" + CertID + ".pfx", pfxCert);
 
-            //FileContentResult fcResult = File(p12Cert, "application/octet-stream", "sslCertHDU.p12");
-            FileContentResult fcResult = File(System.Text.Encoding.ASCII.GetBytes(cerCert), "application/octet-stream", "sslCertHDU.cer");
+
+            FileContentResult fcResult = File(p12Cert, "application/octet-stream", CertID + ".p12");
+            //FileContentResult fcResult = File(System.Text.Encoding.ASCII.GetBytes(cerCert), "application/octet-stream", "176743490865.cer");
             return fcResult;
         }
 
         //-----------
+
+        [HttpGet]
+        public ActionResult get_public_cert(string id)
+        {
+            try
+            {
+                string cerCert = System.IO.File.ReadAllText(AppContext.BaseDirectory + "/" + id + ".cer");
+                FileContentResult fcResult = File(System.Text.Encoding.ASCII.GetBytes(cerCert), "application/octet-stream", id + ".cer");
+                return fcResult;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return Content("notfound");
+            }
+        }
     }
 }
